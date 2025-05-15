@@ -1,3 +1,6 @@
 [submodule "backend"]
 	path = backend
-	url = https://github.com/Zolske/Zoltans-Event-Manager-Backend.git
+	url = ssh://git@github.com:Zolske/Zoltans-Event-Manager-Backend.git
+[submodule "frontend"]
+	path = frontend
+	url = git@github.com:Zolske/Zoltans-Evant-Manager-Frontend.git
