@@ -1,10 +1,21 @@
 # Welcome to Zoltans Event Manager
+![app image](./doc/image/app_prview.png)
 
+---
+- [project structure](#how-is-the-project-structured)
+- [app walkthrough](#walkthrough)
+- [security](#security)
+- [how to run-install the app](#how-to-run-install-the-app)
+- [entity relationship diagram](#entity-relationship-diagram)
+- [wireframe](#wireframe)
+
+---
 ## What is 'Zoltans Event Manager' ?
 Is mainly a Android application in which the User can subscribe to events and the Event Organizer can create, update, and delete those events.  
 One of the bonus features is the possibility for the user to import events to their Google Calendar.  
 Authentication is handled by Google, which is safe and convenient for the users and organizers.
 
+---
 
 ## How is the project Structured?
 the project consists of 3 parts:  
@@ -15,9 +26,38 @@ the project consists of 3 parts:
 **Frontend:** 
 - the Kotlin Android Application where events can be seen and managed.
 
-## How to run the application
+## App Walkthrough
+
+- the **User**:
+    - can conveniently and safely **log in with his google** account
+    - can see **upcoming events**, after subscribing to them, those events move to **subscribed events**, this keeps the list clean
+    - can add events to his google calendar (*needs to be already installed on the phone*)  
+- the **Admin**: 
+    - can **create**, **update** and **delete** events, all this while keeping the UI clean
+    - dose not need to remember any extra passwords, he also logs in with his google account
+- the **Root Admin**:
+    - has the power to demote or promote any user with a click of a button to an admin
+    - has an **extra password to login** for added security
+- the **UI is clean** and easy to navigate, e.g. *users do not to see admin related functionality*
+- text output while logging in informs the user about the progress and there are many **toast messages to keep the users updated**.  
+
+![app images](./doc/image/app_prview_2.png)
+
+### More Features
+- the server at the backend runs coast efficiently on a **headless Ubuntu server**
+- **beautiful UI** with Jetpack Compose and Google Material Design
+
+## Security
+- The **user logs in with his Google account**, no passwords are stored in the app or backend.  
+- If google authenticates the user, the **app receives then a "google id token"** which already contains information about the user, *e.g. name, email, picture, ...* .  
+- The "google id token" is then send to the backend, which than again checks with Google the authenticity and creates then a **Json Web Token** which is used for further authentication.
+- The Android application needs to register with its **SHA-1 certificate fingerprint** by Google and a special for this app from Google Created **Web Client ID** key is used.
+
+
+## How to run-install the app
 **NOTE:** this repo contains two submodules, cloning this repo will not clone the submodules!  
 You can run the Android application in your Android Studio emulator. You can use the backend server running on a server, and do not need to install the Java backend application or set up the PostgreSQL database. 
+
 ### Front End Android App
 1. follow this [*link*](https://github.com/Zolske/Zoltans-Evant-Manager-Frontend/tree/main) to get to the Github repository and clone it, make sure it is the **main branch**.
 
@@ -97,3 +137,24 @@ WEB_CLIENT_ID=                // <- 'web client id'
 1. At the root of the backend is the [`schema.sql`](https://github.com/Zolske/Zoltans-Event-Manager-Backend/blob/main/schema.sql) file, which contains the instructions of how to build the database.  
 Replace `<USERNAME>` with your user name and `<DBNAME>` with the name of your database, then run the command:  
 `psql -U <USERNAME> -d <DBNAME> -f schema.sql` 
+
+## App Design 
+
+### Entity Relationship Diagram 
+
+![erd](./doc/image/erd.png)
+
+#### Relationships
+
+**One-to-many between app_user and subscription**:  
+One user can subscribe to many events.
+
+**One-to-many between events and subscription:**  
+One event can have many user subscriptions.
+
+The models a many-to-many relationship between app_user and events, via subscription
+
+## Wireframe
+![wireframe](./doc/image/wireframe.png)
+
+Original wireframing of the app, due to time constraints and technical obstacles, cuts had to be made.
