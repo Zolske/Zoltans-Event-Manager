@@ -81,10 +81,19 @@ public class Cred_BLUEPRINT {
     }
 ```
 ##### 'credential.properties_BLUEPRINT'
-4. `Rename` the [`credential.properties_BLUEPRINT`](https://github.com/Zolske/Zoltans-Event-Manager-Backend/blob/main/src/main/resources/credential.properties_BLUEPRINT) to `credential.properties` and past in the 'web client id':  
+4. `Rename` the [`credential.properties_BLUEPRINT`](https://github.com/Zolske/Zoltans-Event-Manager-Backend/blob/main/src/main/resources/credential.properties_BLUEPRINT) to `credential.properties`.  
+
 ```
-WEB_CLIENT_ID=
+spring.datasource.username=   // <- your postgresql user name
+spring.datasource.password=   // <- your postgresql password
+WEB_CLIENT_ID=                // <- 'web client id'
 ```
+##### 'application.properties'
+5. Change the name of 'event_manager' to the name of your database  
+`spring.datasource.url=jdbc:postgresql://localhost:5432/event_manager`
+
 
 ### PostgreSQL database
-1. 
+1. At the root of the backend is the [`schema.sql`](https://github.com/Zolske/Zoltans-Event-Manager-Backend/blob/main/schema.sql) file, which contains the instructions of how to build the database.  
+Replace `<USERNAME>` with your user name and `<DBNAME>` with the name of your database, then run the command:  
+`psql -U <USERNAME> -d <DBNAME> -f schema.sql` 
