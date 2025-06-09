@@ -10,7 +10,7 @@
 - [wireframe](#wireframe)
 
 ---
-## What is 'Zoltans Event Manager' ?
+## What is Zoltans Event Manager ?
 Is mainly a Android application in which the User can subscribe to events and the Event Organizer can create, update, and delete those events.  
 One of the bonus features is the possibility for the user to import events to their Google Calendar.  
 Authentication is handled by Google, which is safe and convenient for the users and organizers.
