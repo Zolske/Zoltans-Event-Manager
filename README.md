@@ -25,7 +25,7 @@ You can run the Android application in your Android Studio emulator. You can use
 `cd Zoltans-Evant-Manager-Frontend`
 
 
-###### `local.properties_BLUEPRINT` *file, for setting credentials*
+##### `local.properties_BLUEPRINT` *file, for setting credentials*
 3. Add the values which I gave you to the keys and then past those together with the keys to your
 'local.properties' file.
 
@@ -37,6 +37,8 @@ BASE_URL_BACKEND=""      # provide by me, or clone backend for local backend
 ROOT_ADMIN_PASSWORD=""   # you choose the password which is going to be the password
                          # for the root user in the app
 ```
+
+- *may be you have to build your project again after updating the 'local.properties' file  
 
 #### [Set up your Google Cloud Console project](https://developer.android.com/identity/sign-in/credential-manager-siwg#set-google)
 *... in the mean time you can open the project in Android Studio, ...*  
@@ -63,5 +65,26 @@ and enter the key into the field
 ### Backend End
 - say 'hi' to the backend application by clicking on the [link](http://167.86.118.254:8080/api/auth/hello)  
 
+1. Clone the [main repository](https://github.com/Zolske/Zoltans-Event-Manager-Backend) into your project directory. 
 
 
+##### Cred class for 'web client id'
+2. `Rename` the [`Cred_BLUEPRINT.java`](https://github.com/Zolske/Zoltans-Event-Manager-Backend/blob/main/src/main/java/com/kepes/config/Cred_BLUEPRINT.java) to `Cred.java` which you can find under */src/main/java/com/kepes/config/*, user intelij **renaming** command!
+
+3. Past the 'web client id' which I gave to you to the constant:  
+```
+public class Cred_BLUEPRINT {
+    private static final String WEB_CLIENT_ID = ""; // <- past id here
+
+    public String getWebClientId() {
+        return WEB_CLIENT_ID;
+    }
+```
+##### 'credential.properties_BLUEPRINT'
+4. `Rename` the [`credential.properties_BLUEPRINT`](https://github.com/Zolske/Zoltans-Event-Manager-Backend/blob/main/src/main/resources/credential.properties_BLUEPRINT) to `credential.properties` and past in the 'web client id':  
+```
+WEB_CLIENT_ID=
+```
+
+### PostgreSQL database
+1. 
